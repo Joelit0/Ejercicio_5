@@ -13,7 +13,7 @@ class Gist
     #   response_status = "400"
     attr_reader :response_status
     # Esta variable almacena la respuesta del usuario, con respecto a si quiere intentar otra vez.
-    # @note En caso de que haya un error en de conexión, se le preguntará al usuario si quiere intentar otra vez.
+    # @note En caso de que haya un error de conexión, se le preguntará al usuario si quiere intentar otra vez.
     # @return [String] respuesta del usuario.
     # @example Si el usuario quiere intentar otra vez:
     #   try_again = "Si"
