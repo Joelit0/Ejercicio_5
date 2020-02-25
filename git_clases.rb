@@ -100,7 +100,7 @@ loop do
         break if gist.try_again == "No"
     else
         puts "El archivo no existe..."
-        puts "Queres intentar denuevo?"
+        puts "Queres intentar de nuevo?"
         continue = gets.chomp.capitalize
         break if continue == "No"
     end
