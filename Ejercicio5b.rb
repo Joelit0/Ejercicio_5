@@ -49,7 +49,7 @@ loop do
           
       json = response.body
       parsed = JSON.parse(json)
-      response_status = "#{response.code}"
+      response_status = response.code
 
       if response_status== "201"
         puts "========================================================================================"
@@ -76,7 +76,7 @@ loop do
     route = gets.chomp
     puts "========================================================================================"
     
-    if File.exist?("#{route}")
+    if File.exist?(route)
       puts "---Añade una descripción---"
       puts "========================================================================================"
       description = gets.chomp
@@ -106,7 +106,7 @@ loop do
 
         open(f, "r:UTF-8") do |file| # Leer el contenido del archivo
           @content = file.read()
-          @bar[:files][@name] = {:content => @content}
+          @bar[:files][@name] = { :content => @content } 
         end
       end
       
@@ -125,7 +125,7 @@ loop do
       
       json = response.body
       parsed = JSON.parse(json)
-      response_status = "#{response.code}"
+      response_status = response.code
   
       if response_status == "201"
         puts "Tu gist se ha creado con exito. La URL de su gist es: "+ parsed["url"]
