@@ -2,7 +2,7 @@ require_relative '../Gist_Attributes.rb'
 require 'spec_helper'
 
 RSpec.describe GistAttributes do
-  describe "File_exist" do
+  describe "exist?" do
     it "should be true if file exists" do
       filename = "Main.rb"
       description = "Hello"
