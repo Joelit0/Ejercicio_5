@@ -10,7 +10,7 @@ loop do
   state= gets.chomp.capitalize
   state = state != "No"
   gist = GistAttributes.new(filename, description, state)
-  gist.file()
+  gist.check_existence()
 
   break if gist.gist_attr.response_status == HTTP_STATUS_CREATED
   break if gist.gist_attr.try_again == "No"

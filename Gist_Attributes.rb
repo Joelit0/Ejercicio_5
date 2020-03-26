@@ -9,7 +9,7 @@ class GistAttributes
     @state = state
   end
 
-  def file
+  def check_existence
     File.exist?(@filename) ? self.attributes : puts("Su archivo no existe")
   end
 

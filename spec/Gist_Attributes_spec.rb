@@ -8,7 +8,7 @@ RSpec.describe GistAttributes do
       description = "Hello"
       state = true
       gist_attributes = GistAttributes.new(filename, description, state)
-      gist_attributes.file()
+      gist_attributes.check_existence()
 
       expect(gist_attributes.gist_attr.response_status).to eq "201"
     end
@@ -18,8 +18,8 @@ RSpec.describe GistAttributes do
       description = "Hello" 
       state = true
       gist_attributes = GistAttributes.new(filename, description, state)
-      gist_attributes.file()
-      expect { gist_attributes.file() }.to output("Su archivo no existe\n").to_stdout
+      gist_attributes.check_existence()
+      expect { gist_attributes.check_existence() }.to output("Su archivo no existe\n").to_stdout
     end
   end
 end
