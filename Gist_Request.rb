@@ -5,6 +5,8 @@ require 'dotenv/load'
 require 'rspec'
 
 GITHUB_URL = "https://api.github.com/gists"
+HTTP_STATUS_CREATED = "201"
+HTTP_STATUS_INVALID = "422"
 
 class GistRequest
   attr_reader :response_status, :try_again
@@ -32,7 +34,7 @@ class GistRequest
     parsed = JSON.parse(json)
     @response_status = response.code
 
-    if @response_status == "201"
+    if @response_status == HTTP_STATUS_CREATED
       puts "Tu Gist se creó, la url es " + parsed["url"]
     end
 

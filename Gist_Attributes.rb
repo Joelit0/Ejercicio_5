@@ -10,11 +10,7 @@ class GistAttributes
   end
 
   def file
-    if File.exist?(@filename)
-      self.attributes
-    else
-      puts "Su archivo no existe"
-    end
+    File.exist?(@filename) ? self.attributes : puts("Su archivo no existe")
   end
 
   def attributes

@@ -3,9 +3,9 @@ require 'spec_helper'
 
 RSpec.describe GistAttributes do
   describe "File_exist" do
-    it "Archivo existente" do
+    it "should be true if file exists" do
       filename = "Main.rb"
-      description = "Holas"
+      description = "Hello"
       state = true
       gist_attributes = GistAttributes.new(filename, description, state)
       gist_attributes.file()
@@ -13,9 +13,9 @@ RSpec.describe GistAttributes do
       expect(gist_attributes.gist_attr.response_status).to eq "201"
     end
 
-    it "Archivo inexistente" do
+    it "should be false if file doesn't exists" do
       filename = "error.rb"
-      description = "Holas" 
+      description = "Hello" 
       state = true
       gist_attributes = GistAttributes.new(filename, description, state)
       gist_attributes.file()
@@ -24,6 +24,3 @@ RSpec.describe GistAttributes do
   end
 end
    
-  
-
-  
