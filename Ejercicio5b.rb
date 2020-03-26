@@ -5,6 +5,7 @@ require 'pathname'
 require 'dotenv/load'
 
 GITHUB_URL = "https://api.github.com/gists"
+HTTP_STATUS_CREATED = "201"
 
 loop do
   puts "========================================================================================"
@@ -23,18 +24,10 @@ loop do
       puts "---Añade una descripción---"
       puts "========================================================================================"
       description = gets.chomp
-      puts"---Quieres que tu repositorio sea publico?---"
+      puts "---Quieres que tu repositorio sea público? Si/No, por defecto el repositorio será público---"
       puts "========================================================================================"
       state = gets.chomp.capitalize
-
-      if state == "Si" 
-        state = true;
-      elsif state == "No"
-        state = false;
-      else
-        puts "Responde Si o No..."
-      end
-      
+      state = state != "No"
       open(filename, "r:UTF-8") { |file| @content = file.read() }
       uri = URI.parse(GITHUB_URL)
       request = Net::HTTP::Post.new(uri)
@@ -51,7 +44,7 @@ loop do
       parsed = JSON.parse(json)
       response_status = response.code
 
-      if response_status== "201"
+      if response_status== HTTP_STATUS_CREATED
         puts "========================================================================================"
         puts "Tu gist se ha creado con exito. La URL de su gist es: "+ parsed["url"]
         puts "========================================================================================"
@@ -81,20 +74,12 @@ loop do
       puts "========================================================================================"
       description = gets.chomp
       puts "========================================================================================"
-      puts"---Quieres que tu repositorio sea publico?---"
+      puts "---Quieres que tu repositorio sea público? Si/No, por defecto el repositorio será público---"
       puts "========================================================================================"
       state = gets.chomp.capitalize
-      puts "========================================================================================"
-
-      if state == "Si" 
-        state = true;
-      elsif state == "No"
-        state = false;
-      else
-        puts "Responde si o no..."
-      end
-
-      only_files = Dir.glob("#{route}"+'/**/*').reject do |path|
+      state = state != "No"
+      
+      only_files = Dir.glob(route +'/**/*').reject do |path|
         File.directory?(path)
       end
       
@@ -104,7 +89,7 @@ loop do
         @name = Pathname.new(f).basename 
         puts @name
 
-        open(f, "r:UTF-8") do |file| # Leer el contenido del archivo
+        open(f, "r:UTF-8") do |file|
           @content = file.read()
           @bar[:files][@name] = { :content => @content } 
         end
@@ -127,7 +112,7 @@ loop do
       parsed = JSON.parse(json)
       response_status = response.code
   
-      if response_status == "201"
+      if response_status == HTTP_STATUS_CREATED
         puts "Tu gist se ha creado con exito. La URL de su gist es: "+ parsed["url"]
         break
       end
