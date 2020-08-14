@@ -3,6 +3,7 @@ require 'json'
 require 'uri'
 require 'dotenv/load'
 require 'rspec'
+require 'paint'
 
 GITHUB_URL = "https://api.github.com/gists"
 HTTP_STATUS_CREATED = "201"

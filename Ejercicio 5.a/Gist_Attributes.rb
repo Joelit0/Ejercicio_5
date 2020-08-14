@@ -1,4 +1,5 @@
 require_relative 'Gist_Request'
+require 'paint'
 
 class GistAttributes
   attr_reader :filename, :description, :content, :gist_attr
