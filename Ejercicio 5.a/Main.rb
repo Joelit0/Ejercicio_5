@@ -18,8 +18,11 @@ loop do
   puts Paint["====================================================================================================", :cyan]
   state = state != "No"
   gist = GistAttributes.new(filename, description, state)
-  gist.check_existence()
-
-  break if gist.gist_attr.response_status == HTTP_STATUS_CREATED
-  break if gist.gist_attr.try_again == "No"
+  
+  if gist.check_existence()
+    break if gist.gist_attr.response_status == HTTP_STATUS_CREATED
+    break if gist.gist_attr.try_again == "No"
+  else
+    break
+  end
 end
