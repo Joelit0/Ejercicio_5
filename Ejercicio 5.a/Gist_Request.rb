@@ -49,8 +49,26 @@ class GistRequest
 
     rescue SocketError => se
       print Paint["Ocurrió un error de conexion, Quieres intentar de nuevo? ", :red]
-      @try_again = gets.chomp.capitalize
-      puts Paint["====================================================================================================", :cyan]
+      
+      loop do
+        @try_again = gets.chomp.capitalize
+
+        if @try_again == "Si"
+          print("\e[2J\e[f")
+          break
+        elsif @try_again == "No"
+          puts Paint["Thanks you!!", :green]
+          break
+        else
+          print "Responde Si/No: "
+        end
+      end
+
+      if @try_again == "Si"
+        
+      else
+
+      end
     end
   end
 end
