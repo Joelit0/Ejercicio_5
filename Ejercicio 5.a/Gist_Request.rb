@@ -43,14 +43,14 @@ class GistRequest
     @response_status = response.code
 
     if @response_status == HTTP_STATUS_CREATED
-      puts "Tu Gist se creó, la url es " + parsed["url"]
-      puts "===================================================================================================="
+      puts Paint["Tu Gist se creó, la url es:", :green, :green] +" "+ Paint[parsed["url"], :magenta]
+      puts Paint["====================================================================================================", :cyan]
     end
 
     rescue SocketError => se
-      puts "Ocurrió un error de conexion, Quieres intentar de nuevo?"
-      puts "===================================================================================================="
+      print Paint["Ocurrió un error de conexion, Quieres intentar de nuevo? ", :red]
       @try_again = gets.chomp.capitalize
+      puts Paint["====================================================================================================", :cyan]
     end
   end
 end
