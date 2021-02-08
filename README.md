@@ -32,7 +32,8 @@ cd Gist_by_file
 ```
 
 ```bash
-echo "YOUR_USERNAME= [Here put your name] YOUR_TOKEN= [Here put your token]" > .env
+echo "YOUR_USERNAME=[Here put your name]
+YOUR_TOKEN=[Here put your token]" > .env
 ```
 
 We do the same with the other directory:
@@ -42,8 +43,10 @@ cd Gist_by_path
 ```
 
 ```bash
-echo "YOUR_USERNAME= [Here put your name] YOUR_TOKEN= [Here put your token]" > .env
+echo "YOUR_USERNAME=[Here put your name]
+YOUR_TOKEN=[Here put your token]" > .env
 ```
+
 ## Run Scripts
   ### - Gist_by_file
   To execute 'Gist_by_file' we have to move to the folder:
